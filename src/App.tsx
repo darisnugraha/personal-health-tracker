@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy } from "react";
+
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import "react-datepicker/dist/react-datepicker.css";
+
+const WelcomePage = lazy(() => import("./app/pages/welcome-page"));
+const GenderPage = lazy(() => import("./app/pages/gender"));
+const DateOfBirthPage = lazy(() => import("./app/pages/date-of-birth"));
+const AddBodyWeightPage = lazy(() => import("./app/pages/add-body-weight"));
+const ProfilePage = lazy(() => import("./app/pages/profile"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<WelcomePage />} />
+      <Route path="/gender" element={<GenderPage />} />
+      <Route path="/date-of-birth" element={<DateOfBirthPage />} />
+      <Route path="/add-body-weight" element={<AddBodyWeightPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+    </Routes>
   );
 }
 
